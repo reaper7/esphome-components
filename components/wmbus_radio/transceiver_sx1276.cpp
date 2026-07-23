@@ -161,9 +161,7 @@ void SX1276::restart_rx() {
 
 int8_t SX1276::get_rssi() {
   uint8_t rssi_now = this->spi_read(0x11);
-  return (int8_t) (-rssi_now / 2);
   // Prefer signal RSSI captured during reception over current (noise floor)
-  /*
   uint8_t rssi = this->signal_rssi_ ? this->signal_rssi_ : rssi_now;
   this->signal_rssi_ = 0;
 
@@ -172,8 +170,9 @@ int8_t SX1276::get_rssi() {
   if (irq2 & (1 << 4))
     this->spi_write(0x3F, (uint8_t)(1 << 4));
 
-  return (int8_t)(-rssi / 2);
-  */
+  //return (int8_t)(-rssi / 2);
+  return (int8_t)(-rssi_now / 2);
+
 }
 
 const char *SX1276::get_name() { return TAG; }
