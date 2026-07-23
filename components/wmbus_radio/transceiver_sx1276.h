@@ -14,7 +14,7 @@ public:
 
 protected:
   optional<uint8_t> read() override;
-  uint8_t signal_rssi_{0};
+  // uint8_t signal_rssi_{0};
 };
 } // namespace wmbus_radio
 } // namespace esphome
