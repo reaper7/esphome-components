@@ -160,8 +160,7 @@ void SX1276::restart_rx() {
 }
 
 int8_t SX1276::get_rssi() {
-  // uint8_t rssi_now = this->spi_read(0x11);
-  uint8_t rssi_now = this->spi_read(0x19);
+  uint8_t rssi_now = this->spi_read(0x11);
   // Prefer signal RSSI captured during reception over current (noise floor)
   uint8_t rssi = this->signal_rssi_ ? this->signal_rssi_ : rssi_now;
   this->signal_rssi_ = 0;
